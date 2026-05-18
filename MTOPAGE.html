@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reviviendo Hardware | Mantenimiento Profesional Gaming & PC</title>
+
+<meta name="description" content="Mantenimiento, ensamblaje de PC, instalación Windows, Office, diagnósticos gratis y optimización para consolas, laptops y PCs en Santiago, RD.">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<style>
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root{
+    --bg:#08090c;
+    --bg2:#11151c;
+    --card:#151922;
+    --orange:#ff8c00;
+    --yellow:#ffb703;
+    --white:#ffffff;
+    --muted:#a5afbd;
+    --border:rgba(255,140,0,.12);
+    --shadow:0 15px 40px rgba(0,0,0,.45);
+    --radius:20px;
+}
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+    radial-gradient(circle at top right, rgba(255,140,0,.08), transparent 25%),
+    radial-gradient(circle at bottom left, rgba(255,183,3,.06), transparent 25%),
+    var(--bg);
+
+    color:var(--white);
+    font-family:'Segoe UI',sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(var(--orange),var(--yellow));
+    border-radius:20px;
+}
+
+/* =========================
+   SOCIAL FLOAT
+========================= */
+
+.social-bar{
+    position:fixed;
+    top:50%;
+    left:20px;
+    transform:translateY(-50%);
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    z-index:999;
+}
+
+.social-btn{
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:#fff;
+    font-size:22px;
+    transition:.35s;
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
+}
+
+.social-btn:hover{
+    transform:translateX(5px) scale(1.08);
+}
+
+.whatsapp{
+    background:#25D366;
+}
+
+.tiktok{
+    background:#000;
+    border:1px solid #fff;
+}
+
+.gmail{
+    background:#EA4335;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    max-width:1250px;
+    margin:auto;
+    padding:30px 30px 100px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    width:650px;
+    height:650px;
+    background:radial-gradient(circle, rgba(255,140,0,.15), transparent 70%);
+    top:-200px;
+    right:-180px;
+    animation:pulse 6s infinite ease-in-out;
+}
+
+.hero::after{
+    content:'';
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle, rgba(255,183,3,.08), transparent 70%);
+    bottom:-200px;
+    left:-180px;
+}
+
+@keyframes pulse{
+    50%{
+        transform:scale(1.1);
+    }
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(255,140,0,.08);
+    border:1px solid var(--border);
+    color:var(--yellow);
+    margin-bottom:25px;
+    backdrop-filter:blur(10px);
+}
+
+.hero h1{
+    font-size:4.5rem;
+    line-height:1.05;
+    margin-bottom:20px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.hero h1 span{
+    background:linear-gradient(90deg,var(--orange),var(--yellow));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    max-width:850px;
+    margin:auto;
+    color:var(--muted);
+    font-size:1.15rem;
+    margin-bottom:40px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:16px 30px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,var(--orange),var(--yellow));
+    color:#000;
+    box-shadow:0 0 30px rgba(255,140,0,.25);
+}
+
+.btn-primary:hover{
+    transform:translateY(-3px);
+}
+
+.btn-secondary{
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.03);
+    color:#fff;
+}
+
+.btn-secondary:hover{
+    border-color:var(--orange);
+    background:rgba(255,140,0,.08);
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:70px;
+}
+
+.stat-card{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:var(--radius);
+    padding:30px;
+    backdrop-filter:blur(10px);
+}
+
+.stat-card h2{
+    color:var(--orange);
+    font-size:2.5rem;
+}
+
+.stat-card p{
+    color:var(--muted);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    margin-top:120px;
+}
+
+.section-title{
+    font-size:2rem;
+    margin-bottom:35px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.section-title i{
+    color:var(--yellow);
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:26px;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:linear-gradient(180deg,var(--card),#10141b);
+    border-radius:var(--radius);
+    padding:28px;
+    border:1px solid rgba(255,255,255,.05);
+    position:relative;
+    overflow:hidden;
+    transition:.35s;
+}
+
+.card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg, transparent, rgba(255,140,0,.08), transparent);
+    transform:translateX(-100%);
+    transition:.7s;
+}
+
+.card:hover::before{
+    transform:translateX(100%);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:var(--orange);
+    box-shadow:var(--shadow);
+}
+
+.card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.icon-box{
+    width:60px;
+    height:60px;
+    border-radius:14px;
+    background:rgba(255,140,0,.1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--orange);
+    font-size:24px;
+}
+
+.tag{
+    padding:6px 12px;
+    border-radius:999px;
+    background:rgba(255,183,3,.1);
+    color:var(--yellow);
+    font-size:.75rem;
+}
+
+.card h3{
+    font-size:1.4rem;
+    margin-bottom:12px;
+}
+
+.price{
+    font-size:2rem;
+    color:var(--yellow);
+    font-weight:800;
+    margin:20px 0;
+}
+
+.features{
+    list-style:none;
+}
+
+.features li{
+    margin-bottom:12px;
+    display:flex;
+    gap:10px;
+    color:var(--muted);
+}
+
+.features i{
+    color:var(--orange);
+}
+
+/* =========================
+   INFO BOX
+========================= */
+
+.info-box{
+    background:linear-gradient(145deg,#171b22,#10141a);
+    padding:40px;
+    border-radius:var(--radius);
+    border:1px solid var(--border);
+}
+
+.info-item{
+    margin-bottom:30px;
+}
+
+.info-item:last-child{
+    margin-bottom:0;
+}
+
+.info-item h4{
+    color:var(--yellow);
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.info-item p{
+    color:var(--muted);
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    aspect-ratio:4/3;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+.gallery-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent,rgba(0,0,0,.85));
+    display:flex;
+    align-items:flex-end;
+    padding:20px;
+}
+
+.gallery-overlay span{
+    font-weight:700;
+}
+
+/* =========================
+   TESTIMONIALS
+========================= */
+
+.testimonials{overflow:hidden}
+to{transform:translateX(-100%)}}
+.testimonials{
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.testimonial{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:var(--radius);
+    padding:28px;
+}
+
+.stars{
+    color:gold;
+    margin-bottom:15px;
+}
+
+.testimonial p{
+    color:var(--muted);
+    margin-bottom:18px;
+}
+
+.user{
+    font-weight:700;
+}
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.final-cta{
+    margin-top:120px;
+    padding:80px 30px;
+    border-radius:30px;
+    text-align:center;
+
+    background:
+    linear-gradient(135deg,
+    rgba(255,140,0,.12),
+    rgba(255,183,3,.05));
+
+    border:1px solid var(--border);
+}
+
+.final-cta h2{
+    font-size:2.7rem;
+    margin-bottom:20px;
+}
+
+.final-cta p{
+    max-width:700px;
+    margin:auto;
+    margin-bottom:35px;
+    color:var(--muted);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    margin-top:60px;
+    text-align:center;
+    color:var(--muted);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .social-bar{
+        bottom:20px;
+        top:auto;
+        left:50%;
+        transform:translateX(-50%);
+        flex-direction:row;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .container{
+        padding:20px 18px 120px;
+    }
+
+    .hero{
+        min-height:auto;
+        padding-top:120px;
+    }
+
+    .hero h1{
+        font-size:2.2rem;
+    }
+
+    .btn{
+        width:100%;
+        justify-content:center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SOCIAL -->
+
+<div class="social-bar">
+
+    <a href="https://wa.me/18297714911?text=Hola,%20quiero%20información%20sobre%20mantenimiento." class="social-btn whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="https://www.tiktok.com/@mantenimentos" class="social-btn tiktok" target="_blank">
+        <i class="fab fa-tiktok"></i>
+    </a>
+
+    </div>
+
+<div class="container">
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🔥 +200 Equipos Recuperados en Santiago, RD
+        </div>
+
+        <h1>
+            REVIVIENDO <span>HARDWARE</span>
+        </h1>
+
+        <p>
+            Servicio técnico especializado en mantenimiento, optimización, instalación de software, ensamblaje de PCs, reparación y mejora de rendimiento para consolas, laptops y computadoras.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="https://wa.me/18297714911" class="btn btn-primary">
+                <i class="fab fa-whatsapp"></i>
+                Agendar por WhatsApp
+            </a>
+
+            <!-- DESLIZA A LOS PRECIOS -->
+            <a href="#planes" class="btn btn-secondary">
+                <i class="fas fa-microchip"></i>
+                Ver Planes
+            </a>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <h2>200+</h2>
+                <p>Equipos Recuperados</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>100%</h2>
+                <p>Proceso Grabado</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>24H</h2>
+                <p>Entrega Rápida</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SERVICIOS -->
+
+<section class="section" id="planes">
+
+    <h2 class="section-title">
+        <i class="fas fa-gamepad"></i>
+        Consolas (Por Generación)
+    </h2>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="card-top">
+                <div class="icon-box">
+                    <i class="fab fa-playstation"></i>
+                </div>
+
+                <div class="tag">Popular</div>
+            </div>
+
+            <h3>PS3 / Xbox 360</h3>
+
+            <div class="price">
+                RD$ 1,000
+            </div>
+
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Limpieza profunda</li>
+                <li><i class="fas fa-check"></i> Pasta térmica</li>
+                <li><i class="fas fa-check"></i> Optimización térmica</li>
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-top">
+                <div class="icon-box">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+
+                <div class="tag">Gaming</div>
+            </div>
+
+            <h3>PS4 / Xbox One</h3>
+
+            <div class="price">
+                RD$ 1,500
+            </div>
+
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Limpieza interna</li>
+                <li><i class="fas fa-check"></i> Cambio térmico</li>
+                <li><i class="fas fa-check"></i> Reducción de temperatura</li>
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-top">
+                <div class="icon-box">
+                    <i class="fas fa-fire"></i>
+                </div>
+
+                <div class="tag">Next Gen</div>
+            </div>
+
+            <h3>PS5 / Xbox Series X|S</h3>
+
+            <div class="price">
+                RD$ 2,000
+            </div>
+
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Con pasta térmica</li>
+                <li><i class="fas fa-check"></i> Todas las versiones</li>
+                <li><i class="fas fa-check"></i> Limpieza premium</li>
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-top">
+                <div class="icon-box">
+                    <i class="fas fa-bolt"></i>
+                </div>
+
+                <div class="tag">Premium</div>
+            </div>
+
+            <h3>PS5 (Metal Líquido Original)</h3>
+
+            <div class="price">
+                RD$ 2,500
+            </div>
+
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Metal líquido original</li>
+                <li><i class="fas fa-check"></i> Máxima disipación térmica</li>
+                <li><i class="fas fa-check"></i> Compatible con todas las versiones</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- LAPTOPS -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        <i class="fas fa-laptop"></i>
+        Laptops
+    </h2>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="card-top">
+                <div class="icon-box">
+                    <i class="fas fa-laptop"></i>
+                </div>
+
+                <div class="tag">Básico</div>
+            </div>
+
+            <h3>Laptops Básicas</h3>
+
+            <div class="price">
+                RD$ 1,500
+            </div>
+
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Deep Cleaning</li>
+                <li><i class="fas fa-check"></i> Cambio térmico</li>
+                <li><i class="fas fa-check"></i> Mejor rendimiento</li>
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-top">
+                <div class="icon-box">
+                    <i class="fas fa-rocket"></i>
+                </div>
+
+                <div class="tag">Gaming</div>
+            </div>
+
+            <h3>Laptops Gaming</h3>
+
+            <div class="price">
+                RD$ 2,000
+            </div>
+
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Pasta térmica premium</li>
+                <li><i class="fas fa-check"></i> Test de temperaturas</li>
+                <li><i class="fas fa-check"></i> Optimización airflow</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PCS -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        <i class="fas fa-desktop"></i>
+        Computadoras de Escritorio (PC)
+    </h2>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <div class="card-top">
+                <div class="icon-box">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+
+                <div class="tag">Oficina</div>
+            </div>
+
+            <h3>PC de Oficina</h3>
+
+            <div class="price">
+                RD$ 1,500
+            </div>
+
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Si son varias acomodamos el precio 🤝</li>
+                <li><i class="fas fa-check"></i> Limpieza completa</li>
+                <li><i class="fas fa-check"></i> Optimización sistema</li>
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-top">
+                <div class="icon-box">
+                    <i class="fas fa-video"></i>
+                </div>
+
+                <div class="tag">Workstation</div>
+            </div>
+
+            <h3>PC Trabajo / Edición</h3>
+
+            <div class="price">
+                RD$ 2,000
+            </div>
+
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Optimización airflow</li>
+                <li><i class="fas fa-check"></i> Cambio térmico premium</li>
+                <li><i class="fas fa-check"></i> Mejor estabilidad</li>
+            </ul>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-top">
+                <div class="icon-box">
+                    <i class="fas fa-computer"></i>
+                </div>
+
+                <div class="tag">RGB</div>
+            </div>
+
+            <h3>PC Gaming</h3>
+
+            <div class="price">
+                RD$ 2,500
+            </div>
+
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Mantenimiento completo</li>
+                <li><i class="fas fa-check"></i> Gestión térmica avanzada</li>
+                <li><i class="fas fa-check"></i> Cable management</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<section class="section">
+<h2 class="section-title"><i class="fas fa-download"></i> Servicios Extra</h2>
+<p style="color:#a5afbd;margin-bottom:30px">Software, diagnósticos y ensamblaje para sacar el máximo rendimiento a tu equipo.</p>
+<div class="grid">
+<div class="card"><div class="card-top"><div class="icon-box"><i class="fab fa-windows"></i></div><div class="tag">Software</div></div><h3>Instalación Windows</h3><p>Windows 7,8,10,11 y versiones optimizadas.</p><div class="price">RD$800</div><ul class="features"><li><i class="fas fa-check"></i>Drivers incluidos</li><li><i class="fas fa-check"></i>Optimización rendimiento</li><li><i class="fas fa-check"></i>Configuración inicial</li></ul></div>
+
+<div class="card"><div class="card-top"><div class="icon-box"><i class="fas fa-file-word"></i></div><div class="tag">Office</div></div><h3>Office + Activación</h3><p>Instalación y activación de Office.</p><div class="price">RD$800</div><ul class="features"><li><i class="fas fa-check"></i>Word, Excel, PowerPoint</li><li><i class="fas fa-check"></i>Activación</li><li><i class="fas fa-check"></i>Configuración</li></ul></div>
+
+<div class="card"><div class="card-top"><div class="icon-box"><i class="fas fa-stethoscope"></i></div><div class="tag">Gratis</div></div><h3>Diagnóstico Gratis</h3><p>Evaluación para detectar problemas antes de reparar.</p><div class="price">GRATIS</div><ul class="features"><li><i class="fas fa-check"></i>Temperaturas</li><li><i class="fas fa-check"></i>Estado hardware</li><li><i class="fas fa-check"></i>Recomendaciones</li></ul></div>
+
+<div class="card"><div class="card-top"><div class="icon-box"><i class="fas fa-tools"></i></div><div class="tag">Ensamble</div></div><h3>Montaje PC Personalizada</h3><p>Armado para gaming, edición, diseño o trabajo.</p><div class="price">Desde RD$1,500</div><ul class="features"><li><i class="fas fa-check"></i>PC Gaming</li><li><i class="fas fa-check"></i>Edición de video</li><li><i class="fas fa-check"></i>Oficina / Diseño</li></ul></div>
+</div>
+
+<div class="info-box" style="margin-top:30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px">
+<div><h4>🛡 Garantía</h4><p>Trabajo con seguimiento y soporte.</p></div>
+<div><h4>⚡ Entrega rápida</h4><p>Buscando reducir tiempos.</p></div>
+<div><h4>📦 Soporte</h4><p>Ayuda después del servicio.</p></div>
+</div>
+</section>
+<!-- UBICACION -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        <i class="fas fa-map-marker-alt"></i>
+        ¿Dónde estamos ubicados y cómo trabajamos?
+    </h2>
+
+    <div class="info-box">
+
+        <div class="info-item">
+
+            <h4>
+                <i class="fas fa-home"></i>
+                Ubicación Local
+            </h4>
+
+            <p>
+                Estamos en <strong>Hato del Yaque, Santiago</strong>.
+                Puedes traer tu equipo directamente a nuestro espacio de trabajo.
+            </p>
+
+        </div>
+
+        <div class="info-item">
+
+            <h4>
+                <i class="fas fa-truck"></i>
+                Servicio a Domicilio Disponible
+            </h4>
+
+            <p>
+                Vamos a tu hogar, buscamos el equipo,
+                realizamos el mantenimiento en nuestro taller
+                <strong>(grabando todo el proceso en video)</strong>
+                y luego te lo llevamos de vuelta limpio,
+                optimizado y listo para rendir al máximo. 📦
+            </p>
+
+        </div>
+
+        <div class="info-item">
+
+            <h4>
+                <i class="fas fa-money-bill-wave"></i>
+                Costo de Transporte
+            </h4>
+
+            <p>
+                Se cobra una pequeña cuota
+                (generalmente entre <strong>RD$100 y RD$500</strong>)
+                si es una zona lejana de Santiago o fuera de la ciudad,
+                para cubrir gastos de traslado.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- GALERIA -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        <i class="fas fa-camera"></i>
+        Trabajos Realizados
+    </h2>
+
+    <div class="gallery">
+
+        <div class="gallery-item">
+            <img src="https://raw.githubusercontent.com/darlinfernandez003-art/portafolio/refs/heads/main/TRABAJOS/WhatsApp%20Image%202026-03-20%20at%2010.50.09%20PM.jpeg">
+            <div class="gallery-overlay">
+                <span>Mantenimiento PC Gaming</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://raw.githubusercontent.com/darlinfernandez003-art/portafolio/refs/heads/main/TRABAJOS/WhatsApp%20Image%202026-03-20%20at%2010.53.08%20PM.jpeg">
+            <div class="gallery-overlay">
+                <span>Metal Líquido PS5</span>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://raw.githubusercontent.com/darlinfernandez003-art/portafolio/refs/heads/main/TRABAJOS/223213.jpeg">
+            <div class="gallery-overlay">
+                <span>Instalacion PC de Edicion</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TESTIMONIOS -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        <i class="fas fa-star"></i>
+        Opiniones de Clientes
+    </h2>
+
+    
+
+
+<div class="testimonials">
+<div class="testimonial"><div class="stars">★★★★★</div><p>“Mi PS5 dejó de sonar como turbina. Me enviaron video del proceso completo.”</p><div class="user">— Joan Ramírez · Santiago</div></div>
+<div class="testimonial"><div class="stars">★★★★★</div><p>“repararon mi laptop e instalaron windows 11 pro.”</p><div class="user">— Ana López · Tamboril</div></div>
+<div class="testimonial"><div class="stars">★★★★★</div><p>“Montaron mi PC Gaming para streaming, esta increible.”</p><div class="user">— Juan Freiby Guzman</div></div>
+<div class="testimonial"><div class="stars">★★★★★</div><p>“Servicio a domicilio puntual.”</p><div class="user">— María Fernández</div></div>
+<div class="testimonial"><div class="stars">★★★★★</div><p>“Mi laptop ya no se congela cuando estoy haciendo trabajos de la universidad.”</p><div class="user">— Daniel Cruz</div></div>
+<div class="testimonial"><div class="stars">★★★★★</div><p>“Diagnóstico gratis y explicación clara antes de reparar.”</p><div class="user">— Luis Rodríguez</div></div>
+</div>
+</section>
+
+<!-- CTA FINAL -->
+
+<section class="final-cta">
+
+    <h2>
+        ¿Tu equipo se calienta demasiado?
+    </h2>
+
+    <p>
+        Dale mantenimiento antes de que el daño sea irreversible.
+        Mejora temperaturas, rendimiento y vida útil.
+    </p>
+
+    <a href="https://wa.me/18297714911" class="btn btn-primary">
+        <i class="fab fa-whatsapp"></i>
+        Agendar Ahora
+    </a>
+
+</section>
+
+<footer>
+    © 2026 Reviviendo Hardware — Santiago, República Dominicana
+</footer>
+
+</div>
+
+<script>
+
+/* ANIMACIONES SCROLL */
+
+const observer = new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            entry.target.animate([
+                {
+                    opacity:0,
+                    transform:'translateY(40px)'
+                },
+                {
+                    opacity:1,
+                    transform:'translateY(0)'
+                }
+            ],{
+                duration:700,
+                fill:'forwards'
+            });
+
+        }
+
+    });
+
+},{
+    threshold:.15
+});
+
+document.querySelectorAll(
+'.card,.gallery-item,.testimonial,.info-box,.stat-card'
+).forEach(el => {
+
+    el.style.opacity='0';
+    observer.observe(el);
+
+});
+
+</script>
+
+</body>
+</html>
